@@ -1,7 +1,7 @@
-from pyelasticsearch import ElasticSearch
+from elasticsearch import Elasticsearch
 import json
 
-es = ElasticSearch('http://192.168.2.90:9200/')
+es = Elasticsearch('192.168.2.90:9200/')
 
 #es.index("contacts", "person", {"name":"Joe Tester", "age": 25, "title": "QA Master"})
 #es.index("contacts", "person", {"name":"Joe Tester", "age": 25, "title": "QA Master"}, id=1)

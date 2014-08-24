@@ -1,10 +1,12 @@
-from pyelasticsearch import ElasticSearch
+#-*- coding: utf-8 -*-
+
+from elasticsearch import Elasticsearch
 import json
 
-es = ElasticSearch('http://192.168.2.90:9200/')
+es = Elasticsearch('192.168.2.90:9200/')
 
-data = es.cluster_state()
+data = es.info()
 
-print(data)
+print(json.dumps(data,indent=4,sort_keys=True))
 
 

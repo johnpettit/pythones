@@ -4,7 +4,7 @@ import json
 es = ElasticSearch('http://192.168.2.90:9200/')
 
 
-print "Enter a search term. XXX to quit."
+print("Enter a search term. XXX to quit.")
 
 
 data = input()
@@ -22,5 +22,5 @@ while(data != 'XXX'):
 
     print(res3j)
 
-    print "Enter a search term. XXX to quit."
+    print("Enter a search term. XXX to quit.")
     data = input()

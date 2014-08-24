@@ -1,8 +1,8 @@
 import csv
 from Account import Account
-from pyelasticsearch import ElasticSearch
+from elasticsearch import Elasticsearch
 
-es = ElasticSearch('http://192.168.2.90:9200/')
+es = Elasticsearch('192.168.2.90:9200/')
 
 acs = []
 count = 0

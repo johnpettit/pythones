@@ -1,12 +1,12 @@
-from pyelasticsearch import ElasticSearch
+from elasticsearch import Elasticsearch
 import json
 
-es = ElasticSearch('http://192.168.2.90:9200/')
+es = Elasticsearch('192.168.2.90:9200/')
 
 
 index= {'mappings': {
             'address': {
-               'properties': {
+                'properties': {
                     'id': {'type': 'long', 'store':'yes'},
                     'FirstName': { 'type':'string','store':'yes','index':'analyzed'},
                     'LastName': { 'type':'string','store':'yes','index':'analyzed'},
