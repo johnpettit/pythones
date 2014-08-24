@@ -1,3 +1,5 @@
+#-*- coding: utf-8 -*-
+
 class EVBase:
     """Base Class for EV Data Objects"""
     internalCount = 0
@@ -11,6 +13,6 @@ class EVBase:
 
 # self test
 
-jp = EVBase()
-print(jp.__doc__)
-print(jp.showCount())
+#jp = EVBase()
+#print(jp.__doc__)
+#print(jp.showCount())
