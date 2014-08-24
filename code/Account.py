@@ -5,7 +5,7 @@ from EVBase import EVBase
 class Account(EVBase):
     """Account Object"""
 
-    indexName = "account"
+    _indexName = "account"
 
 
 jp = Account()

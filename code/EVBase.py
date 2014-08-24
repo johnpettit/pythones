@@ -1,14 +1,16 @@
 #-*- coding: utf-8 -*-
 
+from ElasticSearchManager import esManager as es
+
 class EVBase:
     """Base Class for EV Data Objects"""
-    internalCount = 0
+    _internalCount = 0
 
     def __init__(self):
-        self.internalCount = self.internalCount + 1
+        self._internalCount = self._internalCount + 1
 
     def showCount(self):
-        return self.internalCount
+        return self._internalCount
 
 
 # self test
