@@ -9,7 +9,7 @@ count = 0
 with open('data.csv','rb') as datafile:
     datareader = csv.reader(datafile,delimiter=',')
     for row in datareader:
-        print row
+        print(row)
         count += 1
         new = Account()
         new.fields['FirstName'] = row[0]
@@ -33,15 +33,14 @@ for acc in acs:
     #    print k + " : " + v
     #print "First Name : " + acc.fields['FirstName']
     #print "Last Name  : " + acc.fields['LastName']
-    print "First Name  : " + acc.FirstName
-    print "Last Name  : " + acc.LastName
+    print("First Name  : " + acc.FirstName)
+    print("Last Name  : " + acc.LastName)
     es.index('names','address', {'FirstName':acc.FirstName,'LastName':acc.LastName,'NickName':acc.NickName,'Street1':acc.Street1,'Street2':acc.Street2,'City':acc.City,'State':acc.State,'Postal':acc.Postal,'Country':acc.Country,'CreateDate':acc.CreateDate,'ModifiedDate':acc.ModifiedDate})
 
-es.refresh('names')
+es.indices.refresh(index='names')
 
+print(len(acs))
 
-print len(acs)
-
-print count
+print(count)
 
 

@@ -18,7 +18,7 @@ class EVBase:
 
 # self test
 
-jp = EVBase()
-print(jp.__doc__)
-print(jp.showCount())
-jp.insert()
+#jp = EVBase()
+#print(jp.__doc__)
+#print(jp.showCount())
+#jp.insert()

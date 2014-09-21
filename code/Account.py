@@ -7,10 +7,21 @@ class Account(EVBase):
 
     _indexName = "account"
 
+    fields = {
+        "id": str,
+        "FirstName": str,
+        "LastName": str,
+    }
 
-jp = Account()
-print(jp.__doc__)
-print(jp.internalCount)
+    def __init__(self):
+        self.data = {
+            "id": None,
+            "FirstName": None,
+            "LastName": None,
+        }
+
+#jp = Account()
+#print(jp.__doc__)
 
 
 
