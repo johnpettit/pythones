@@ -2,16 +2,14 @@
 
 class EVBase:
     """Base Class for EV Data Objects"""
-    _internalCount = 0
+
+    _errorMessage = ''
 
     def __init__(self):
-        self._internalCount = self._internalCount + 1
+        self._errorMessage = ''
 
-    def showCount(self):
-        return self._internalCount
-
-    def insert(self):
-        self._es.insert()
+    def geterrormessage(self):
+        return self._errorMessage
 
 # self test
 

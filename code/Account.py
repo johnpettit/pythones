@@ -14,7 +14,7 @@ class Account(EVBase, EVElasticSearch):
         "LastName": str,
     }
 
-    required_fields = ["FirstName", "LastName"]
+    _requiredFields = ["FirstName", "LastName"]
 
     def __init__(self):
         self._fields = {
@@ -24,22 +24,27 @@ class Account(EVBase, EVElasticSearch):
         }
 
     def create(self):
-        #check for values
-        returnval = True
-        for field in self.required_fields:
+        #check for values and type
+        for field in self._requiredFields:
             if self._fields[field] == '':
-                returnval = False
+                self._errorMessage = 'Required Field Missing: ' + field
+                return False
 
         #good  ADD RECORD
-        return returnval
+        res = self._es.es.index(index='names', doc_type='address', body={'FirstName': self._fields['FirstName'], 'LastName': self._fields['LastName']})
+        print(res)
+        self._es.es.indices.refresh(index='names')
+        return True
 
 jp = Account()
 print(jp.__doc__)
+jp._fields['FirstName'] = 'John'
+jp._fields['LastName'] = 'Smith'
 res = jp.create()
 if res:
     print(res)
 else:
-    print('HI')
+    print(jp.geterrormessage())
 
 
     

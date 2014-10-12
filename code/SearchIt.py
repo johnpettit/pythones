@@ -1,7 +1,7 @@
-from pyelasticsearch import ElasticSearch
+from elasticsearch import Elasticsearch
 import json
 
-es = ElasticSearch('http://192.168.2.90:9200/')
+es = Elasticsearch('http://192.168.2.90:9200/')
 
 
 print("Enter a search term. XXX to quit.")

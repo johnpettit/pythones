@@ -4,7 +4,7 @@ import json
 es = Elasticsearch('192.168.2.90:9200/')
 
 
-index= {'mappings': {
+index = {'mappings': {
             'address': {
                 'properties': {
                     'id': {'type': 'long', 'store':'yes'},
