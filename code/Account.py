@@ -17,11 +17,7 @@ class Account(EVBase, EVElasticSearch):
     _requiredFields = ["FirstName", "LastName"]
 
     def __init__(self):
-        self._fields = {
-            "id": "",
-            "FirstName": "",
-            "LastName": "",
-        }
+        self._clearFields()
 
     def create(self):
         #check for values and type
@@ -62,12 +58,14 @@ class Account(EVBase, EVElasticSearch):
     def delete(self):
         push
 
+    #######-- Private Methods -- #######################################
+
     def _clearFields(self):
         for field in self._fields:
             self._fields[field] = ''
             return True
 
-#------------TEST_________________________
+#------------TEST-------------------------------------------------------
 
 jp = Account()
 print(jp.__doc__)
