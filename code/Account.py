@@ -51,6 +51,14 @@ class Account(EVBase, EVElasticSearch):
         self._fields['LastName'] = res['_source']['LastName']
         return res
 
+    def update(self):
+        push
+
+    def delete(self):
+        push
+
+#------------TEST_________________________
+
 jp = Account()
 print(jp.__doc__)
 jp._fields['FirstName'] = 'John'
