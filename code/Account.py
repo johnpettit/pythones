@@ -32,9 +32,24 @@ class Account(EVBase, EVElasticSearch):
 
         #good  ADD RECORD
         res = self._es.es.index(index='names', doc_type='address', body={'FirstName': self._fields['FirstName'], 'LastName': self._fields['LastName']})
-        print(res)
+        #print(res)
         self._es.es.indices.refresh(index='names')
+        self._fields['id'] = res['_id']
         return True
+
+    def getByID(self, id):
+        if id == '':
+            #TODO better to Throw
+            self._errorMessage = 'Required Field Missing: id'
+            return False
+
+        res = self._es.es.get(index='names', doc_type='address', id=id)
+        #TODO check result
+        print(res)
+        self._fields['id'] = id
+        self._fields['FirstName'] = res['_source']['FirstName']
+        self._fields['LastName'] = res['_source']['LastName']
+        return res
 
 jp = Account()
 print(jp.__doc__)
@@ -43,6 +58,12 @@ jp._fields['LastName'] = 'Smith'
 res = jp.create()
 if res:
     print(res)
+else:
+    print(jp.geterrormessage())
+
+result = jp.getByID(jp._fields['id'])
+if result:
+    print(jp._fields['FirstName'])
 else:
     print(jp.geterrormessage())
 
