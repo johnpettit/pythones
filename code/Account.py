@@ -32,10 +32,15 @@ class Account(EVBase, EVElasticSearch):
 
         #good  ADD RECORD
         res = self._es.es.index(index='names', doc_type='address', body={'FirstName': self._fields['FirstName'], 'LastName': self._fields['LastName']})
-        #print(res)
-        self._es.es.indices.refresh(index='names')
-        self._fields['id'] = res['_id']
-        return True
+        if res['created'] == True:
+            print(res)
+            self._es.es.indices.refresh(index='names')
+            self._fields['id'] = res['_id']
+            return True
+        else:
+            self._clearFields()
+            self._errorMessage = 'Error Creating'  #todo add error message
+            return False
 
     def getByID(self, id):
         if id == '':
@@ -56,6 +61,11 @@ class Account(EVBase, EVElasticSearch):
 
     def delete(self):
         push
+
+    def _clearFields(self):
+        for field in self._fields:
+            self._fields[field] = ''
+            return True
 
 #------------TEST_________________________
 
