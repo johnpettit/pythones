@@ -27,7 +27,7 @@ class AccountCollection(EVBase, EVElasticSearch):
             add = Account()
             add.getByID(account['_id'])
             self._accounts.append(add)
-        print(len(self._accounts))
+            print(len(self._accounts))
         return True
 
     #######-- Private Methods -- #######################################
@@ -37,3 +37,6 @@ class AccountCollection(EVBase, EVElasticSearch):
 jp = AccountCollection()
 #print(jp.__doc__)
 jp.getAll()
+print(jp._accounts)
+for account in jp._accounts:
+    print(account._fields['id'])
