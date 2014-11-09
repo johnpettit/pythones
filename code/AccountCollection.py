@@ -2,6 +2,7 @@
 
 from EVBase import EVBase
 from EVElasticSearch import EVElasticSearch
+from Account import *
 
 class AccountCollection(EVBase, EVElasticSearch):
     """AccountCollection Object"""
@@ -18,15 +19,21 @@ class AccountCollection(EVBase, EVElasticSearch):
             self._errorMessage = 'Required Field Missing: id'
             return False
 
-        res = self._es.es.mget(index='names', doc_type='address', body={'_id', 'FirstName', 'LastName'})
+        res = self._es.es.search(index='names', doc_type='address')
         #TODO check result
-        print(res)
-        return res
+        results = res['hits']['hits']
+        for account in results:
+            print(account['_id'])
+            add = Account()
+            add.getByID(account['_id'])
+            self._accounts.append(add)
+        print(len(self._accounts))
+        return True
 
     #######-- Private Methods -- #######################################
 
 #------------TEST-------------------------------------------------------
 
 jp = AccountCollection()
-print(jp.__doc__)
+#print(jp.__doc__)
 jp.getAll()

@@ -46,7 +46,7 @@ class Account(EVBase, EVElasticSearch):
 
         res = self._es.es.get(index='names', doc_type='address', id=id)
         #TODO check result
-        print(res)
+        #print(res)
         self._fields['id'] = id
         self._fields['FirstName'] = res['_source']['FirstName']
         self._fields['LastName'] = res['_source']['LastName']
