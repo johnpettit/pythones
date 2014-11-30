@@ -15,7 +15,7 @@ class AccountCollection(EVBase, EVElasticSearch):
 
     def getAll(self):
         if id == '':
-            #TODO better to Throw
+            #TODO better to Raise
             self._errorMessage = 'Required Field Missing: id'
             return False
 
